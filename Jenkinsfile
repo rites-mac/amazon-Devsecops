@@ -95,7 +95,7 @@ pipeline {
 
                         // Also push latest
                         sh "docker tag amazon riteshkawadkar/amazon:latest"
-                        sh "docker push hriteshkawadkar/amazon:latest"
+                        sh "docker push riteshkawadkar/amazon:latest"
                     }
                 }
             }
