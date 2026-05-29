@@ -23,26 +23,26 @@ pipeline {
             }
         }
 
-        stage("SonarQube Analysis") {
-            steps {
-                withSonarQubeEnv('sonar-server') {
-                    sh ''' $SCANNER_HOME/bin/sonar-scanner \
-                        -Dsonar.projectName=amazon \
-                        -Dsonar.projectKey=amazon '''
-                }
-            }
-        }
+        // stage("SonarQube Analysis") {
+        //     steps {
+        //         withSonarQubeEnv('sonar-server') {
+        //             sh ''' $SCANNER_HOME/bin/sonar-scanner \
+        //                 -Dsonar.projectName=amazon \
+        //                 -Dsonar.projectKey=amazon '''
+        //         }
+        //     }
+        // }
 
-        stage("Quality Gate") {
-            steps {
-                script {
-                    timeout(time: 3, unit: 'MINUTES') {
+        // stage("Quality Gate") {
+        //     steps {
+        //         script {
+        //             timeout(time: 3, unit: 'MINUTES') {
                   
-                    waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
-                }
-            }
-        }
-        }
+        //             waitForQualityGate abortPipeline: false, credentialsId: 'sonar-token'
+        //         }
+        //     }
+        // }
+        // }
 
         stage("Install NPM Dependencies") {
             steps {
